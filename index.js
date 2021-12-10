@@ -62,6 +62,15 @@ app.put("/herois/:id", (require, response) => {
     response.send("Registro atualizado com sucesso!");
 })
 
+// [DELETE] "/herois/:id" Delete (Remover)
+app.delete("/herois/:id", (require, response) => {
+    const id = require.params.id - 1;
+    
+    delete lista[id];
+
+    response.send("Registro excluido com sucesso!");
+})
+
 app.listen(3333, () => {
     console.log("Rodando na porta 3333 🔥🚀")
 });
