@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const express= require("express");
+const express = require("express");
 const res = require("express/lib/response");
 const app = express();
 
@@ -44,11 +44,22 @@ app.get("/herois/:id", (require, response) => {
 
 // [POST] "/herois" Create (Criar)
 app.post("/herois", (require, response) => {
-    console.log(request.body, typeof request.body);
-    const item = request.body.nome;
+    // console.log(request.body, typeof request.body);
+    const item = require.body.nome;
 
     lista.push(item);
     response.send("Registro criado com sucesso!");
+})
+
+// [PUT] "/herois/:id" Update (Atualizar)
+app.put("/herois/:id", (require, response) => {
+    const id = require.params.id - 1;
+
+    const item = require.body.nome;
+
+    lista[id] = item;
+    
+    response.send("Registro atualizado com sucesso!");
 })
 
 app.listen(3333, () => {
