@@ -25,7 +25,7 @@ const lista = [
 
 // [GET] "/herois" Read All (Ler tudo)
 app.get("/herois", (require, response) => {
-    response.send(lista)
+    response.send(lista.filter(Boolean));
 })
 
 // [GET] "/herois/:id" Read Single - by Id (Ler individualmente pelo - pelo id)
