@@ -1,7 +1,10 @@
-const { request } = require("express");
+const { request, response } = require("express");
 const express= require("express");
 const res = require("express/lib/response");
 const app = express();
+
+// informar para o Express que iremos utilizar JSON no Body
+app.use(express.json());
 
 app.get("/", (require, response) => {
     response.send("Hello World!");
@@ -37,6 +40,15 @@ app.get("/herois/:id", (require, response) => {
     const item = lista[id];
 
     response.send(item);
+})
+
+// [POST] "/herois" Create (Criar)
+app.post("/herois", (require, response) => {
+    console.log(request.body, typeof request.body);
+    const item = request.body.nome;
+
+    lista.push(item);
+    response.send("Registro criado com sucesso!");
 })
 
 app.listen(3333, () => {
